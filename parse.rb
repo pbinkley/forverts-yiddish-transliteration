@@ -13,14 +13,14 @@ def transliterate input
   target = ''
   source.split.each do |token|
     trans = @yt.transliterate token
-    output += '<div>' + trans + '<br/>' + token + '</div>'
+    output += '<div>' + trans + '<br/><a href="https://www.cs.uky.edu/~raphael/yiddish/dictionary.cgi?base=' + token + '">' + token + '</a></div>'
   end
   output
 end
 
 source = ARGV[0]
 
-#source = http://yiddish.forward.com/articles/214617/saying-good-by-to-our-treasured-printed-edition/? 
+#source = http://yiddish.forward.com/articles/214617/saying-good-by-to-our-treasured-printed-edition/?
 
 doc = Nokogiri::HTML(open(source))
 
@@ -37,6 +37,7 @@ end
 
 puts '<html><head><meta charset="UTF-8">'
 puts '<style type="text/css">.pairwise div { display: inline-block; margin-right: 10px; margin-bottom: 1em; font-size: 150%; } .pairwise { margin-bottom: 2em; direction: rtl; } .h1 { font-size: 200%; }</style>'
+#puts '<script type="text/javascript" src="dictionary.js"></script>'
 puts '</head><body>'
 puts '<header><p>Source: <a href="' + source + '">' + source + '</a></p></header>'
 puts '<div class="pairwise h1">' + h1 + '</div>'
