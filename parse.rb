@@ -25,8 +25,7 @@ source = ARGV[0]
 doc = Nokogiri::HTML(open(source))
 
 h1 = transliterate doc.xpath('//h1')
-
-paras = doc.xpath('//div[@id="constrictor"]//p')
+paras = doc.xpath('//div[@itemprop="articleBody"]//p')
 paras = paras.first paras.size - 1 # remove last para, which is in English
 outputparas = []
 
